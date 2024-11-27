@@ -13,6 +13,6 @@ import lombok.extern.jackson.Jacksonized;
 @NoArgsConstructor
 public class CurrencyPriceDTO {
 
-    public  USDBRL usdbrl;
+    public  USDBRL USDBRL;
 
 }
