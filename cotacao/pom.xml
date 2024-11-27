@@ -89,6 +89,11 @@
             <version>1.18.34</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-quartz</artifactId>
+            <version>3.12.3</version>
+        </dependency>
 
     </dependencies>
 
