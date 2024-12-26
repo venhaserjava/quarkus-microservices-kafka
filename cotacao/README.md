@@ -78,3 +78,14 @@ Create your first JPA entity
 Easily start your REST Web Services
 
 [Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+
+
+### RUN Kafka
+```
+curl -L https://releases.conduktor.io/quick-start -o docker-compose.yml && docker compose up -d --wait && echo "Conduktor started on http://localhost:9092"
+```
+
+### API de cotação de CryptoMoedas
+```
+https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
+```

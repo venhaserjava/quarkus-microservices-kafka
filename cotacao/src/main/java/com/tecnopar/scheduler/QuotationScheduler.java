@@ -15,7 +15,6 @@ public class QuotationScheduler {
     @Transactional
     @Scheduled(every = "35s",identity = "task-job")
     void schedule(){
-
         quotationService.getCurrencyPrice();
     }
 }

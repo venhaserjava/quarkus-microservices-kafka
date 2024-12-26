@@ -20,8 +20,5 @@ public class QuotationDTO {
     private Date date;
 
     private BigDecimal currencyPrice;
-//
-//    private String pctChange;
-//
-//    private String pair;
+
 }
