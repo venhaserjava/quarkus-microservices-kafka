@@ -16,7 +16,7 @@ public class ProposalDetailsDTO {
 
     private Long proposalId;
 
-    private Date created;
+    //private Date created;
 
     private String customer;
 
