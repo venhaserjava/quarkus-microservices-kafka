@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Table(name = "proposal")
@@ -18,6 +19,8 @@ public class ProposalEntity {
     private Long Id;
 
     private String customer;
+
+    private Date created;
 
     @Column(name = "price_tonne")
     private BigDecimal priceTonne;
