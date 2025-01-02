@@ -3,12 +3,14 @@ package com.tecnopar.controller;
 
 import com.tecnopar.dto.ProposalDetailsDTO;
 import com.tecnopar.service.ProposalService;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@ApplicationScoped
 @Path("/api/proposal")
 public class ProposalController {
     private final Logger LOG = LoggerFactory.getLogger(ProposalController.class);

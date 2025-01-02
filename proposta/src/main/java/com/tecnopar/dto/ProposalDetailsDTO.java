@@ -24,7 +24,7 @@ public class ProposalDetailsDTO {
 
     private Integer tonnes;
 
-    private String Country;
+    private String country;
 
     private Integer proposalValidityDays;
 }

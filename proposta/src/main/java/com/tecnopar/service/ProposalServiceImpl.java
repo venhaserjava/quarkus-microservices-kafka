@@ -5,18 +5,20 @@ import com.tecnopar.dto.ProposalDetailsDTO;
 import com.tecnopar.entity.ProposalEntity;
 import com.tecnopar.message.KafkaEvent;
 import com.tecnopar.repository.ProposalRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 import java.util.Date;
 
+@ApplicationScoped
 public class ProposalServiceImpl  implements ProposalService{
 
     @Inject
     ProposalRepository proposalRepository;
 
-    @Inject
-    KafkaEvent kafkaMessages;
+//    @Inject
+//    KafkaEvent kafkaMessages;
 
     @Override
     public ProposalDetailsDTO findFullProposal(Long id) {
@@ -25,7 +27,7 @@ public class ProposalServiceImpl  implements ProposalService{
         return  ProposalDetailsDTO.builder()
                 .proposalId(proposal.getId())
                 .proposalValidityDays(proposal.getProposalValidityDays())
-                .Country(proposal.getCountry())
+                .country(proposal.getCountry())
                 .priceTonne(proposal.getPriceTonne())
                 .customer(proposal.getCustomer())
                 .tonnes(proposal.getTonnes())
@@ -37,12 +39,12 @@ public class ProposalServiceImpl  implements ProposalService{
     public void createNewProposal(ProposalDetailsDTO proposalDetailsDTO) {
 
         ProposalDTO proposal = buildAndSaveNewProposal(proposalDetailsDTO);
-        kafkaMessages.sendNewKafkaEvent(proposal);
+//        kafkaMessages.sendNewKafkaEvent(proposal);
 
     }
 
     @Transactional
-    private ProposalDTO buildAndSaveNewProposal(ProposalDetailsDTO proposalDetailsDTO) {
+    public ProposalDTO buildAndSaveNewProposal(ProposalDetailsDTO proposalDetailsDTO) {
         try {
             ProposalEntity proposal = new ProposalEntity();
 
@@ -70,6 +72,5 @@ public class ProposalServiceImpl  implements ProposalService{
     @Transactional
     public void removeProposal(Long id) {
        proposalRepository.deleteById(id);
-
     }
 }
