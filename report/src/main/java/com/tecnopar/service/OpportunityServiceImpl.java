@@ -7,9 +7,12 @@ import com.tecnopar.entity.OpportunityEntity;
 import com.tecnopar.entity.QuotationEntity;
 import com.tecnopar.repository.OpportunityRepository;
 import com.tecnopar.repository.QuotationRepository;
+import com.tecnopar.utils.CSVHelper;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
+import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -44,5 +47,22 @@ public class OpportunityServiceImpl implements OpportunityService{
     @Override
     public List<OpportunityDTO> generateOpportunityData() {
         return List.of();
+    }
+
+    @Override
+    public ByteArrayInputStream generateCSVOpportunityReport() {
+
+        List<OpportunityDTO> opportunityList = new ArrayList<>();
+
+        opportunityRepository.findAll().list().forEach(item -> {
+            opportunityList.add(OpportunityDTO.builder()
+                    .proposalId(item.getProposal())
+                    .PriceTonne(item.getPriceTonne())
+                    .customer(item.getCustomer())
+                    .lastDollarQuotation(item.getLastDollarQuotation())
+                    .build()
+            );
+        });
+        return CSVHelper.OpportunitiesToCSV(opportunityList);
     }
 }
